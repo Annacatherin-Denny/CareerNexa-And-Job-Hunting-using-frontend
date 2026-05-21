@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CareerNexa - Your Career Partner</title>
+<style>
+/* ===== Global Styles ===== */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background: #f9f9f9;
+    color: #333;
+}
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; }
+
+/* ===== Header ===== */
+header {
+    background: linear-gradient(90deg, #007BFF, #00B4D8);
+    color: white;
+    padding: 15px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    font-size: 1.8em;
+    font-weight: bold;
+}
+nav a {
+    margin-left: 20px;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+nav a:hover {
+    color: #FFD60A;
+}
+
+/* ===== Hero ===== */
+.hero {
+    background: linear-gradient(to right, #007BFF, #00B4D8);
+    color: white;
+    padding: 80px 20px;
+    text-align: center;
+}
+.hero h1 { font-size: 2.5em; margin-bottom: 10px; }
+.hero p { font-size: 1.2em; margin-bottom: 20px; }
+.hero button {
+    background: #FFD60A;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1.1em;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.hero button:hover {
+    background: #ffc107;
+}
+
+/* ===== Sections ===== */
+section {
+    padding: 50px 20px;
+    max-width: 1100px;
+    margin: auto;
+}
+section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2em;
+    color: #007BFF;
+}
+
+/* About Us */
+.about {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    align-items: center;
+}
+.about img {
+    flex: 1;
+    border-radius: 10px;
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.6s ease;
+}
+.about-text {
+    flex: 1;
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.6s ease;
+}
+
+/* Pricing */
+.pricing {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+.price-card {
+    background: white;
+    padding: 20px;
+    flex: 1 1 250px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+.price-card h3 { color: #007BFF; }
+.price-card button {
+    margin-top: 15px;
+    background: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.price-card button:hover { background: #0056b3; }
+
+/* Reviews */
+.reviews {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+.review {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.6s ease;
+}
+
+/* Resume Builder */
+.resume {
+    text-align: center;
+}
+.resume input {
+    margin-top: 10px;
+}
+.resume-preview {
+    margin-top: 20px;
+}
+.resume-preview img {
+    max-width: 150px;
+    border-radius: 10px;
+}
+
+/* Contact */
+form {
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+form input, form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+form button {
+    background: #28a745;
+    border: none;
+    padding: 12px;
+    color: white;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+}
+form button:hover { background: #218838; }
+.success-message {
+    text-align: center;
+    color: green;
+    font-weight: bold;
+    display: none;
+}
+
+/* Footer */
+footer {
+    background: #222;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* Responsive */
+@media(max-width: 768px) {
+    .about { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<header>
+    <div class="logo">CareerNexa</div>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#resume">Resume Builder</a>
+        <a href="#contact">Contact</a>
+        <a href="register.html">Register</a>
+        <a href="login.html">Login</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>Welcome to CareerNexa</h1>
+    <p>Your one-stop platform for jobs, resumes, and career growth.</p>
+    <button onclick="document.querySelector('#pricing').scrollIntoView({behavior:'smooth'})">View Plans</button>
+</section>
+
+<section id="about">
+    <h2>About Us</h2>
+    <div class="about">
+        <img src="https://cdn.prod.website-files.com/62f0854c1cef28185535ab61/65f9856fa3aa7b7a8214fa6b_simple-1.png" alt="Team">
+        <div class="about-text">
+            <p>CareerNexa is a leading job and career growth platform designed to empower job seekers and recruiters alike. Our mission is to connect the right talent with the right opportunities while providing tools to help candidates stand out. From ATS-friendly resume templates to real-time job matching, we ensure that every step in your career journey is backed by innovation, speed, and reliability. With a dedicated team and cutting-edge features, we aim to simplify hiring and job searching for millions worldwide.</p>
+        </div>
+    </div>
+</section>
+
+<section id="pricing">
+    <h2>Pricing</h2>
+    <div class="pricing">
+        <div class="price-card">
+            <h3>Basic</h3>
+            <p>$0/month</p>
+            <p>Access job listings</p>
+            <button>Get Started</button>
+        </div>
+        <div class="price-card">
+            <h3>Pro</h3>
+            <p>$19/month</p>
+            <p>Resume builder + Job alerts</p>
+            <button>Upgrade</button>
+        </div>
+        <div class="price-card">
+            <h3>Premium</h3>
+            <p>$49/month</p>
+            <p>Full access + Priority support</p>
+            <button>Go Premium</button>
+        </div>
+    </div>
+</section>
+
+<section id="reviews">
+    <h2>What Our Users Say</h2>
+    <div class="reviews">
+        <div class="review">"CareerNexa helped me land my dream job in 2 weeks!" - Alex</div>
+        <div class="review">"The resume builder is so easy to use and effective." - Priya</div>
+        <div class="review">"I love the job alerts feature. Saves so much time!" - John</div>
+    </div>
+</section>
+
+<section id="resume">
+    <h2>ATS Resume Builder</h2>
+    <div class="resume">
+        <input type="file" id="photoUpload" accept="image/*">
+        <div class="resume-preview" id="resumePreview"></div>
+        <p>Choose a template:</p>
+        <select>
+            <option>Modern</option>
+            <option>Classic</option>
+            <option>Creative</option>
+        </select>
+    </div>
+</section>
+
+<section id="contact">
+    <h2>Contact Us</h2>
+    <form id="contactForm">
+        <input type="text" id="name" placeholder="Your Name">
+        <input type="email" id="email" placeholder="Your Email">
+        <textarea id="message" placeholder="Your Message"></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+    <div class="success-message" id="successMessage">Your message has been sent!</div>
+</section>
+
+<footer>
+    <p>&copy; 2025 CareerNexa. All rights reserved.</p>
+</footer>
+
+<script>
+// Smooth Scroll for nav
+document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+    link.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelector(link.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+    });
+});
+
+// Scroll animations
+function animateOnScroll(selector, animation) {
+    const items = document.querySelectorAll(selector);
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting) {
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "none";
+            }
+        });
+    }, { threshold: 0.2 });
+    items.forEach(el => observer.observe(el));
+}
+animateOnScroll('.about img');
+animateOnScroll('.about-text');
+animateOnScroll('.price-card');
+animateOnScroll('.review');
+
+// Resume photo preview
+document.getElementById('photoUpload').addEventListener('change', e => {
+    const file = e.target.files[0];
+    if(file) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            document.getElementById('resumePreview').innerHTML = `<img src="${event.target.result}" alt="Resume Photo">`;
+        };
+        reader.readAsDataURL(file);
+    }
+});
+
+// Contact form validation
+document.getElementById('contactForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+    if(name && email.includes('@') && message) {
+        document.getElementById('successMessage').style.display = 'block';
+        e.target.reset();
+    } else {
+        alert('Please fill in all fields with a valid email.');
+    }
+});
+</script>
+
+</body>
+</html>
